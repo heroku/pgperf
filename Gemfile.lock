@@ -17,16 +17,27 @@ GEM
     diff-lcs (1.2.5)
     dotenv (0.7.0)
     erubis (2.7.0)
+    excon (0.36.0)
     foreman (0.67.0)
       dotenv (~> 0.7.0)
       thor (~> 0.17.0)
+    heroics (0.0.10)
+      erubis (~> 2.7.0)
+      excon
+      moneta
+      multi_json (>= 1.9.2)
+      netrc
     http_accept (0.1.5)
     i18n (0.6.9)
     json (1.8.1)
     minitest (5.3.4)
+    moneta (0.7.20)
     multi_json (1.10.1)
+    netrc (0.7.7)
     oj (2.9.0)
     pg (0.17.1)
+    platform-api (0.2.0)
+      heroics (~> 0.0.10)
     pliny (0.0.1)
       activesupport (~> 4.1, >= 4.1.0)
       http_accept (~> 0.1, >= 0.1.5)
@@ -90,6 +101,7 @@ DEPENDENCIES
   multi_json
   oj
   pg
+  platform-api
   pliny
   puma
   rack-ssl
