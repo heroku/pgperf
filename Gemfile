@@ -5,6 +5,7 @@ gem "platform-api"
 gem "hiredis"
 gem "redis", ">= 2.2.0", :require => ["redis/connection/hiredis", "redis"]
 gem "sidekiq"
+gem "clockwork"
 
 gem "multi_json"
 gem "oj"

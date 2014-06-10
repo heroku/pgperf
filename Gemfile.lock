@@ -10,6 +10,9 @@ GEM
     backports (3.6.0)
     celluloid (0.15.2)
       timers (~> 1.1.0)
+    clockwork (0.7.5)
+      activesupport
+      tzinfo
     committee (0.4.13)
       multi_json (> 0.0)
       rack (> 0.0)
@@ -106,6 +109,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  clockwork
   committee
   database_cleaner
   foreman
