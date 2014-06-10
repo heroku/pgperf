@@ -2,6 +2,9 @@ source "https://rubygems.org"
 ruby "2.1.1"
 
 gem "platform-api"
+gem "hiredis"
+gem "redis", ">= 2.2.0", :require => ["redis/connection/hiredis", "redis"]
+gem "sidekiq"
 
 gem "multi_json"
 gem "oj"
