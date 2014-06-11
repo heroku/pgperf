@@ -7,6 +7,8 @@ gem "hiredis"
 gem "redis", ">= 2.2.0", :require => ["redis/connection/hiredis", "redis"]
 gem "sidekiq"
 gem "clockwork"
+gem "attr_secure"
+gem "fernet"
 
 gem "multi_json"
 gem "oj"
