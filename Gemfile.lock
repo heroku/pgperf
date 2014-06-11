@@ -1,3 +1,17 @@
+GIT
+  remote: https://github.com/interagent/pliny.git
+  revision: 5ea15acffacdcd7457e4c9ff320a19215b83f3a1
+  specs:
+    pliny (0.0.3)
+      activesupport (~> 4.1, >= 4.1.0)
+      http_accept (~> 0.1, >= 0.1.5)
+      multi_json (~> 1.9, >= 1.9.3)
+      pg (~> 0.17, >= 0.17.1)
+      prmd (~> 0.1, >= 0.1.1)
+      sequel (~> 4.9, >= 4.9.0)
+      sinatra (~> 1.4, >= 1.4.5)
+      sinatra-router (~> 0.2, >= 0.2.3)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -71,15 +85,6 @@ GEM
     pg (0.17.1)
     platform-api (0.2.0)
       heroics (~> 0.0.10)
-    pliny (0.0.3)
-      activesupport (~> 4.1, >= 4.1.0)
-      http_accept (~> 0.1, >= 0.1.5)
-      multi_json (~> 1.9, >= 1.9.3)
-      pg (~> 0.17, >= 0.17.1)
-      prmd (~> 0.1, >= 0.1.1)
-      sequel (~> 4.9, >= 4.9.0)
-      sinatra (~> 1.4, >= 1.4.5)
-      sinatra-router (~> 0.2, >= 0.2.3)
     prmd (0.3.2)
       erubis (~> 2.7)
     puma (2.8.2)
@@ -149,7 +154,7 @@ DEPENDENCIES
   oj
   pg
   platform-api
-  pliny
+  pliny!
   puma
   rack-ssl
   rack-test
