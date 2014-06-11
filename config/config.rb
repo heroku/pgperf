@@ -19,6 +19,8 @@ module Config
     :heroku_oauth_id,
     :heroku_oauth_secret,
     :heroku_bouncer_secret,
+    :heroku_app_name,
+    :heroku_platform_api_token,
     :database_url
 
   # Optional -- value is returned or `nil` if it wasn't present.
