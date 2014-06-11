@@ -15,10 +15,15 @@ module Config
 
   # Mandatory -- exception is raised for these variables when missing.
   mandatory \
+    :session_secret,
+    :heroku_oauth_id,
+    :heroku_oauth_secret,
+    :heroku_bouncer_secret,
     :database_url
 
   # Optional -- value is returned or `nil` if it wasn't present.
   optional \
+    :redis_url,
     :placeholder
 
   # Override -- value is returned or the set default. Remember to typecast.

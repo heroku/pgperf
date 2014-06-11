@@ -9,6 +9,18 @@ Routes = Rack::Builder.new do
   use Rack::MethodOverride
   use Rack::SSL if Config.rack_env == "production"
 
+  use Rack::Session::Cookie, key: 'rack.session',
+    secret: Config.session_secret
+
+  use Heroku::Bouncer, oauth: { id: Config.heroku_oauth_id, secret: Config.heroku_oauth_secret },
+    secret: Config.heroku_bouncer_secret,
+    herokai_only: true,
+    allow_anonymous: lambda { |req| !/\A\/sidekiq/.match(req.fullpath) }
+
+  map '/sidekiq' do
+    run Sidekiq::Web
+  end
+
   use Pliny::Router do
     # mount all endpoints here
   end
