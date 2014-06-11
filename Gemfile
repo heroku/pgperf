@@ -17,6 +17,7 @@ gem "rack-ssl"
 gem "rake"
 gem "rollbar"
 gem "sequel"
+gem "sequel-paranoid"
 gem "sequel_pg", require: "sequel"
 gem "sinatra", require: "sinatra/base"
 gem "sinatra-contrib", require: ["sinatra/namespace", "sinatra/reloader"]
