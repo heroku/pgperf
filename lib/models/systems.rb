@@ -1,3 +1,5 @@
+require 'attr_secure'
+
 class System < Sequel::Model
 
   plugin :timestamps
