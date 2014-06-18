@@ -1,15 +1,6 @@
 source "https://rubygems.org"
 ruby "2.1.2"
 
-gem "platform-api"
-gem "heroku-bouncer"
-gem "hiredis"
-gem "redis", ">= 2.2.0", :require => ["redis/connection/hiredis", "redis"]
-gem "sidekiq"
-gem "clockwork"
-gem "attr_secure"
-gem "fernet"
-
 gem "multi_json"
 gem "oj"
 gem "pg"
@@ -25,6 +16,15 @@ gem "sinatra", require: "sinatra/base"
 gem "sinatra-contrib", require: ["sinatra/namespace", "sinatra/reloader"]
 gem "sinatra-router"
 gem "sucker_punch"
+
+gem "platform-api"
+gem "heroku-bouncer"
+gem "hiredis"
+gem "redis", ">= 2.2.0", :require => ["redis/connection/hiredis", "redis"]
+gem "sidekiq"
+gem "clockwork"
+gem "attr_secure"
+gem "fernet"
 
 group :development do
   gem "foreman"
