@@ -1,3 +1,5 @@
+require 'sidekiq/web'
+
 Routes = Rack::Builder.new do
   use Pliny::Middleware::RescueErrors, raise: Config.raise_errors?
   use Pliny::Middleware::CORS
