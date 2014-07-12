@@ -27,6 +27,7 @@ module Config
   # Optional -- value is returned or `nil` if it wasn't present.
   optional \
     :redis_url,
+    :console_banner,
     :placeholder,
     :versioning_default,
     :versioning_app_name
@@ -40,6 +41,7 @@ module Config
     puma_workers:     3,
     rack_env:         'development',
     raise_errors:     'false',
+    root:             File.expand_path("../../", __FILE__),
     timeout:          45,
     force_ssl:        'true',
     versioning:       'false'

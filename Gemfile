@@ -4,7 +4,9 @@ ruby "2.1.2"
 gem "multi_json"
 gem "oj"
 gem "pg"
-gem "pliny", git: "https://github.com/interagent/pliny.git"
+gem "pliny"
+gem "pry"
+gem "pry-doc"
 gem "puma"
 gem "rack-ssl"
 gem "rake"
@@ -26,6 +28,10 @@ gem "clockwork"
 gem "attr_secure"
 gem "fernet"
 
+group :development, :test do
+  gem "pry-byebug"
+end
+
 group :development do
   gem "foreman"
 end
@@ -34,7 +40,5 @@ group :test do
   gem "committee"
   gem "database_cleaner"
   gem "rack-test"
-  gem "rr", require: false
-  gem "rspec-core"
-  gem "rspec-expectations"
+  gem "rspec"
 end
