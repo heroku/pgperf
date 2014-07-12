@@ -1,4 +1,5 @@
 require 'sidekiq'
+require 'sidekiq/api'
 require 'open3'
 require_relative './hk_worker'
 
