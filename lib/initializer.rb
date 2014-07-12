@@ -1,3 +1,5 @@
+Bundler.require
+
 module Initializer
   def self.run
     require_config
