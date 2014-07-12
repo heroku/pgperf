@@ -5,7 +5,7 @@ Sequel.migration do
       timestamptz  :created_at, default: Sequel.function(:now), null: false
       timestamptz  :updated_at
       timestamptz  :deleted_at
-      json         :credentials
+      text         :credentials
       json         :details
     end
   end
