@@ -1,6 +1,6 @@
 require 'attr_secure'
 
-class System < Sequel::Model
+class Database < Sequel::Model
 
   plugin :timestamps
   plugin :paranoid

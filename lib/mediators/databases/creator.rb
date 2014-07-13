@@ -1,4 +1,4 @@
-module Mediators::Systems
+module Mediators::Databases
   class Creator < Mediators::Base
     def initialize(args={})
       @shogun_name     = args[:shogun_name]
