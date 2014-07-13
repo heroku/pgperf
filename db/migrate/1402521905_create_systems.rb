@@ -5,8 +5,17 @@ Sequel.migration do
       timestamptz  :created_at, default: Sequel.function(:now), null: false
       timestamptz  :updated_at
       timestamptz  :deleted_at
-      text         :credentials
-      json         :details
+      text         :shogun_name     , null: false
+      text         :shogun_release
+      text         :resource_url    , null: false
+      text         :admin_url       , null: false
+      text         :heroku_id       , null: false
+      text         :plan            , null: false
+      text         :app             , null: false
+      text         :email           , null: false
+      text         :attachment_name , null: false
+      timestamptz  :db_created_at   , null: false
+      text         :db_details
     end
   end
 end
