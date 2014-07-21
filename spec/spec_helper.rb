@@ -6,6 +6,7 @@
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 #
 ENV["RACK_ENV"] = "test"
+ENV["PGPERF_AUTH_SECRET"] = "TD9aS6iAnKmxcuoGrhKvEi6gA3u9h215dnFKhlGFR6U="
 
 require "bundler"
 Bundler.require(:default, :test)
@@ -24,7 +25,7 @@ RSpec.configure do |config|
   config.before :all do
     load('db/seeds.rb') if File.exist?('db/seeds.rb')
   end
-  
+
   config.before :each do
     DatabaseCleaner.start
   end

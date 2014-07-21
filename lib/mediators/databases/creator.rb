@@ -20,10 +20,13 @@ module Mediators::Databases
       check_resource_url_format!
 
       create_system
-      enqueue_benchmark_create if @tests
+      enqueue_creation_of_benchmarks if @tests
     end
 
     private
+
+    def enqueue_creation_of_benchmarks
+    end
 
     def check_admin_url_format!
       return if @admin_url =~ /^postgres:\/\//
@@ -51,6 +54,7 @@ module Mediators::Databases
         db_created_at: @db_created_at,
         db_details: @db_details
       )
+    end
 
   end
 end
