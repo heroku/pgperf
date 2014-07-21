@@ -30,6 +30,10 @@ RSpec.configure do |config|
     DatabaseCleaner.start
   end
 
+  config.expect_with :rspec do |c|
+    c.syntax = :should
+  end
+
   config.after :each do
     DatabaseCleaner.clean
   end
