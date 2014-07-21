@@ -27,6 +27,7 @@ gem "sidekiq"
 gem "clockwork"
 gem "attr_secure"
 gem "fernet"
+gem "fernet-rack", '0.1'
 
 group :development, :test do
   gem "pry-byebug"

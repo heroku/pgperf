@@ -7,8 +7,8 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
-    attr_secure (0.4.1)
-      fernet (= 1.6)
+    attr_secure (0.2.0)
+      fernet
     backports (3.6.0)
     byebug (2.7.0)
       columnize (~> 0.3)
@@ -35,8 +35,10 @@ GEM
     excon (0.38.0)
     faraday (0.9.0)
       multipart-post (>= 1.2, < 3)
-    fernet (1.6)
-      yajl-ruby
+    fernet (2.0)
+      valcro (= 0.1)
+    fernet-rack (0.1)
+      fernet (~> 2.0)
     foreman (0.74.0)
       dotenv (~> 0.11.1)
       thor (~> 0.19.1)
@@ -169,7 +171,7 @@ GEM
     timers (1.1.0)
     tzinfo (1.2.1)
       thread_safe (~> 0.1)
-    yajl-ruby (1.2.1)
+    valcro (0.1)
     yard (0.8.7.4)
 
 PLATFORMS
@@ -181,6 +183,7 @@ DEPENDENCIES
   committee
   database_cleaner
   fernet
+  fernet-rack (= 0.1)
   foreman
   heroku-bouncer
   hiredis

@@ -1,4 +1,5 @@
 require 'sidekiq/web'
+require 'rack/fernet'
 
 Routes = Rack::Builder.new do
   use Pliny::Middleware::RescueErrors, raise: Config.raise_errors?
@@ -24,6 +25,8 @@ Routes = Rack::Builder.new do
   map '/sidekiq' do
     run Sidekiq::Web
   end
+
+  use Rack::Auth::Fernet, Config.pgperf_auth_secret
 
   use Pliny::Router do
     mount Endpoints::Databases
