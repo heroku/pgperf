@@ -6,7 +6,6 @@
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 #
 ENV["RACK_ENV"] = "test"
-ENV["PGPERF_AUTH_SECRET"] = "TD9aS6iAnKmxcuoGrhKvEi6gA3u9h215dnFKhlGFR6U="
 
 require "bundler"
 Bundler.require(:default, :test)
