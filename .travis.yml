@@ -8,5 +8,7 @@ before_script:
   - createdb pgperf_test
   - bundle exec rake db:migrate
 script: bundle exec rspec
+services:
+  - redis-server
 addons:
   postgresql: "9.3"
