@@ -19,7 +19,7 @@ module Mediators::Databases
       check_admin_url_format!
       check_resource_url_format!
 
-      create_system
+      create_database
       enqueue_creation_of_benchmarks if @tests
     end
 
@@ -40,8 +40,8 @@ module Mediators::Databases
       raise ArgumentError "resource_url is not a postgres uri"
     end
 
-    def create_system
-      self.system = System.new(
+    def create_database
+      self.database = Database.create(
         shogun_name: @shogun_name,
         shogun_release: @shogun_release,
         resource_url: @resource_url,
@@ -55,6 +55,5 @@ module Mediators::Databases
         db_details: @db_details
       )
     end
-
   end
 end

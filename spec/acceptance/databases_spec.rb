@@ -15,26 +15,26 @@ describe Endpoints::Databases do
 
   it "GET /databases" do
     get "/databases"
-    last_response.status.should eq(200)
+    expect(last_response.status).to eq(200)
   end
 
   it "POST /databases/:id" do
     post "/databases"
-    last_response.status.should eq(201)
+    expect(last_response.status).to eq(201)
   end
 
   it "GET /databases/:id" do
     get "/databases/#{@database.uuid}"
-    last_response.status.should eq(200)
+    expect(last_response.status).to eq(200)
   end
 
   it "PATCH /databases/:id" do
     patch "/databases/#{@database.uuid}"
-    last_response.status.should eq(200)
+    expect(last_response.status).to eq(200)
   end
 
   it "DELETE /databases/:id" do
     delete "/databases/#{@database.uuid}"
-    last_response.status.should eq(200)
+    expect(last_response.status).to eq(200)
   end
 end
