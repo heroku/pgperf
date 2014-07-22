@@ -1,3 +1,5 @@
+require_relative 'helpers'
+
 module Endpoints
   # The base class for all Sinatra-based endpoints. Use sparingly.
   class Base < Sinatra::Base
@@ -18,6 +20,13 @@ module Endpoints
       content_type :json
       status 404
       "{}"
+    end
+
+    helpers do
+      def respond(response, status: nil)
+        status(status) unless status.nil?
+        JSON.generate(response)
+      end
     end
   end
 end

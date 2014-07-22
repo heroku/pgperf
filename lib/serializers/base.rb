@@ -1,4 +1,4 @@
-class Serializers
+module Serializers
   class Base
     @@structures = {}
 
@@ -11,7 +11,14 @@ class Serializers
     end
 
     def serialize(object)
-      @@structures["#{self.class.name}::#{@type}"].call(object)
+      serializer = @@structures["#{self.class.name}::#{@type}"]
+      if object.is_a?(Array)
+        object.map do |item|
+          serializer.call(item)
+        end
+      else
+        serializer.call(object)
+      end
     end
   end
 end

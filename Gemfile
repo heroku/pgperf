@@ -27,7 +27,7 @@ gem "sidekiq"
 gem "clockwork"
 gem "attr_secure"
 gem "fernet"
-gem "fernet-rack", '0.1'
+gem "fernet-rack", '0.2'
 
 group :development, :test do
   gem "pry-byebug"
@@ -39,6 +39,7 @@ end
 
 group :test do
   gem "committee"
+  gem "fabrication"
   gem "database_cleaner"
   gem "rack-test"
   gem "rspec"

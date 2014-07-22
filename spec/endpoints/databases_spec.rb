@@ -7,8 +7,12 @@ describe Endpoints::Databases do
     Endpoints::Databases
   end
 
+  before do
+    @database = Fabricate(:database)
+  end
+
   describe "GET /databases" do
-    it "succeeds" do
+    it "list existing databases" do
       get "/databases"
       last_response.status.should eq(200)
     end
