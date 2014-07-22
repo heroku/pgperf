@@ -20,7 +20,14 @@ module Endpoints
 
       post do
         database = Mediators::Databases::Creator.run({
-          shogun_name: body_params["shogun_name"],
+          resource_url:  body_params["resource_url"],
+          admin_url:  body_params["admin_url"],
+          heroku_id: body_params["heroku_id"],
+          plan: body_params["plan"],
+          app: body_params["app"],
+          email: body_params["email"],
+          attachment_name: body_params["attachment_name"],
+          description: body_params["description"]
         })
         respond serialize(database), status: 201
       end
@@ -29,8 +36,13 @@ module Endpoints
         respond serialize(@database)
       end
 
-      patch "/:id" do |id|
-        "{}"
+      patch "/:id" do
+        @database = Mediators::Databases::Updater.run({
+          database: @database,
+          resource_url: body_params["resource_url"],
+          admin_url: body_params["admin_url"],
+        })
+        respond serialize(@database)
       end
 
       delete "/:id" do

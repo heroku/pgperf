@@ -17,8 +17,7 @@ Sequel.migration do
       text         :app             , null: false
       text         :email           , null: false
       text         :attachment_name , null: false
-      timestamptz  :db_created_at   , null: false
-      text         :db_details
+      text         :description
     end
   end
 end

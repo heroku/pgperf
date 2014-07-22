@@ -7,8 +7,8 @@ describe Endpoints::Databases do
     Endpoints::Databases
   end
 
-  before do
-    @database = Fabricate(:database)
+  let(:database) do
+    Fabricate(:database)
   end
 
   describe "GET /databases" do
@@ -20,25 +20,44 @@ describe Endpoints::Databases do
 
   describe "GET /databases/:id" do
     it "list existing databases" do
-      get "/databases/#{@database.uuid}"
+      get "/databases/#{database.uuid}"
       expect(last_response.status).to eq(200)
     end
   end
 
-  describe "POST /databases/:id" do
+  describe "POST /databases" do
     it "creates a database" do
       header "Content-Type", "application/json"
       data = JSON.generate({
-        shogun_name: "shogun-perf"
+        resource_url: "postgres://user@postgres/db",
+        admin_url: "postgres://admin@postgres/db",
+        heroku_id: "resource123@herokutest.com",
+        plan: "standard-ika",
+        app: "pgperf",
+        email: "dod@herokumanager.com",
+        attachment_name: "HEROKU_POSTGRESQL_PERF_PURPLE",
+        description: "Make it better, or cheaper, or both"
       })
       post "/databases", data
       expect(last_response.status).to eq(201)
     end
   end
 
+  describe "PATCH /databases/:id" do
+    it "updates a database" do
+      header "Content-Type", "application/json"
+      data = JSON.generate({
+        admin_url: "postgres://admin@localhost/new",
+        resource_url: "postgres://user@localhost/new"
+      })
+      patch "/databases/#{database.uuid}", data
+      expect(last_response.status).to eq(200)
+    end
+  end
+
   describe "DELETE /databases/:id" do
     it "deletes a database by uuid" do
-      delete "/databases/#{@database.uuid}"
+      delete "/databases/#{database.uuid}"
       expect(last_response.status).to eq(200)
     end
   end

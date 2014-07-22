@@ -7,6 +7,6 @@ Fabricator(:database, from: Database) do
   plan "standard-ika"
   app "perf"
   email "purple@rain.com"
-  attachment_name "HEROKU_POSTGRESQL_PURPLE"
-  db_created_at Time.now
+  attachment_name "HEROKU_POSTGRESQL_PERF_PURPLE"
+  description "Make it better, or cheaper, or both"
 end

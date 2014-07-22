@@ -1,7 +1,6 @@
 module Mediators::Databases
   class Creator < Mediators::Base
     def initialize(args={})
-      @shogun_name     = args[:shogun_name]
       @shogun_release  = args[:shogun_release]
       @resource_url    = args[:resource_url]
       @admin_url       = args[:admin_url]
@@ -10,24 +9,19 @@ module Mediators::Databases
       @app             = args[:app]
       @email           = args[:email]
       @attachment_name = args[:attachment_name]
-      @db_created_at   = args[:db_created_at]
-      @db_details      = args[:db_details]
-      @tests           = args[:tests]
+      @description     = args[:description]
     end
 
     def call
       check_admin_url_format!
       check_resource_url_format!
 
-      create_database
-      enqueue_creation_of_benchmarks if @tests
+      database = create_database
+      database.enqueue_benchmark
+      database
     end
 
     private
-
-    def enqueue_creation_of_benchmarks
-    end
-
     def check_admin_url_format!
       return if @admin_url =~ /^postgres:\/\//
 
@@ -40,19 +34,26 @@ module Mediators::Databases
       raise ArgumentError "resource_url is not a postgres uri"
     end
 
+    def shogun_name
+      if m = @attachment_name.match(/\AHEROKU_POSTGRESQL_([^_]*)_[^\Z]*\Z/)
+        "shogun-#{m[1].downcase}"
+      else
+        "shogun"
+      end
+    end
+
     def create_database
-      self.database = Database.create(
-        shogun_name: @shogun_name,
+      Database.create(
+        shogun_name: shogun_name,
         shogun_release: @shogun_release,
         resource_url: @resource_url,
         admin_url: @admin_url,
         heroku_id: @heroku_id,
         plan: @plan,
-        app_name: @app,
+        app: @app,
         email: @email,
         attachment_name: @attachment_name,
-        db_created_at: @db_created_at,
-        db_details: @db_details
+        description: @description
       )
     end
   end

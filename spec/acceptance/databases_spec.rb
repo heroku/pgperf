@@ -8,8 +8,11 @@ describe Endpoints::Databases do
     Routes
   end
 
+  let(:database) do
+    Fabricate(:database)
+  end
+
   before do
-    @database = Fabricate(:database)
     authorize nil, Fernet.generate(Config.pgperf_auth_secret, 'pgperf')
   end
 
@@ -18,23 +21,39 @@ describe Endpoints::Databases do
     expect(last_response.status).to eq(200)
   end
 
-  it "POST /databases/:id" do
-    post "/databases"
+  it "POST /databases" do
+    header "Content-Type", "application/json"
+    data = JSON.generate({
+      resource_url: "postgres://user@postgres/db",
+      admin_url: "postgres://admin@postgres/db",
+      heroku_id: "resource123@herokutest.com",
+      plan: "standard-ika",
+      app: "pgperf",
+      email: "dod@herokumanager.com",
+      attachment_name: "HEROKU_POSTGRESQL_PERF_PURPLE",
+      description: "Make it better, or cheaper, or both"
+    })
+    post "/databases", data
     expect(last_response.status).to eq(201)
   end
 
   it "GET /databases/:id" do
-    get "/databases/#{@database.uuid}"
+    get "/databases/#{database.uuid}"
     expect(last_response.status).to eq(200)
   end
 
   it "PATCH /databases/:id" do
-    patch "/databases/#{@database.uuid}"
+    header "Content-Type", "application/json"
+    data = JSON.generate({
+      admin_url: "postgres://admin@localhost/new",
+      resource_url: "postgres://user@localhost/new"
+    })
+    patch "/databases/#{database.uuid}", data
     expect(last_response.status).to eq(200)
   end
 
   it "DELETE /databases/:id" do
-    delete "/databases/#{@database.uuid}"
+    delete "/databases/#{database.uuid}"
     expect(last_response.status).to eq(200)
   end
 end
