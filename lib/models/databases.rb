@@ -1,6 +1,8 @@
 require 'attr_secure'
 
 class Database < Sequel::Model
+  one_to_many :testset
+
   plugin :timestamps
   plugin :paranoid
 
@@ -8,9 +10,7 @@ class Database < Sequel::Model
   attr_secure :admin_url
 
   def enqueue_benchmark
-    PGPerf::PGBenchToolsWorker.perform_async(Config.database_url,
-      admin_url, description, "select")
-    PGPerf::PGBenchToolsWorker.perform_async(Config.database_url,
-      admin_url, description, "tpc-b")
+    PGPerf::PGBenchToolsWorker.perform_async(uuid, "select")
+    PGPerf::PGBenchToolsWorker.perform_async(uuid, "tpc-b")
   end
 end

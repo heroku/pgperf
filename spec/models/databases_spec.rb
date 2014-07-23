@@ -6,10 +6,8 @@ describe Database do
   end
 
   it "enqueues a benchmark" do
-    expect(PGPerf::PGBenchToolsWorker).to receive(:perform_async).with(Config.database_url,
-      database.admin_url, database.description, "select")
-    expect(PGPerf::PGBenchToolsWorker).to receive(:perform_async).with(Config.database_url,
-    database.admin_url, database.description, "tpc-b")
+    expect(PGPerf::PGBenchToolsWorker).to receive(:perform_async).with(database.uuid, "select")
+    expect(PGPerf::PGBenchToolsWorker).to receive(:perform_async).with(database.uuid, "tpc-b")
     database.enqueue_benchmark
   end
 end
