@@ -11,20 +11,6 @@ describe Endpoints::Databases do
     Fabricate(:database)
   end
 
-  describe "GET /databases" do
-    it "list existing databases" do
-      get "/databases"
-      expect(last_response.status).to eq(200)
-    end
-  end
-
-  describe "GET /databases/:id" do
-    it "list existing databases" do
-      get "/databases/#{database.uuid}"
-      expect(last_response.status).to eq(200)
-    end
-  end
-
   describe "POST /databases" do
     it "creates a database" do
       header "Content-Type", "application/json"

@@ -16,11 +16,6 @@ describe Endpoints::Databases do
     authorize nil, Fernet.generate(Config.pgperf_auth_secret, 'pgperf')
   end
 
-  it "GET /databases" do
-    get "/databases"
-    expect(last_response.status).to eq(200)
-  end
-
   it "POST /databases" do
     header "Content-Type", "application/json"
     data = JSON.generate({
@@ -35,11 +30,6 @@ describe Endpoints::Databases do
     })
     post "/databases", data
     expect(last_response.status).to eq(201)
-  end
-
-  it "GET /databases/:id" do
-    get "/databases/#{database.uuid}"
-    expect(last_response.status).to eq(200)
   end
 
   it "PATCH /databases/:id" do

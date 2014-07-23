@@ -13,11 +13,6 @@ module Endpoints
         @database = Database.present.first(uuid: id) || raise(Pliny::Errors::NotFound)
       end
 
-      get do
-        databases = Database.present.all
-        respond serialize(databases)
-      end
-
       post do
         database = Mediators::Databases::Creator.run({
           resource_url:  body_params["resource_url"],
@@ -30,10 +25,6 @@ module Endpoints
           description: body_params["description"]
         })
         respond serialize(database), status: 201
-      end
-
-      get "/:id" do
-        respond serialize(@database)
       end
 
       patch "/:id" do
