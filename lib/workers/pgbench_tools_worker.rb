@@ -70,13 +70,10 @@ module PGPerf
         target_db_config(tdb_uri)
       ).merge(
         results_db_config(rdb_uri)
-      ).merge(
-        {
+      ).merge({
           'SCRIPT' => "%s.sql" % script_name,
-        }
-      )
+      })
     end
-
 
     def target_db_config(db_uri)
       {
