@@ -25,21 +25,32 @@ module PGPerf
       target_db_uri = URI.parse(target_db)
       env = pgbench_env(results_db_uri, target_db_uri, script_name)
       write_pgpass_file(results_db_uri, target_db_uri)
-      run("./newset '#{description}'", env, chdir: '/app/vendor/pgbench-collector')
+      set_id = run("./newset '#{description}'", env, chdir: '/app/vendor/pgbench-collector')
+      env.merge!({ 'CURRENT_SET' => set_id })
       run("./runset", env, chdir: '/app/vendor/pgbench-collector')
     end
 
     def run(command, env={}, opts={})
       logger.info "running #{command}"
       result = nil
-      Open3.popen3(env, *command, opts) do |stdin, stdout, stderr, wait_thr|
+      output = nil
+      Open3.popen3(env, *command, opts) do |stdin, stdout, stderr, wait_thread|
+        # Close STDIN.
         stdin.close
-        err_thr = Thread.new { stderr.each_line { |l| logger.info("stderr: #{l.chomp}") } }
-        puts "Reading STDOUT"
-        stdout.each_line { |l| logger.info("stdout: #{l.chomp}") }
-        err_thr.join
 
-        result = wait_thr.value.exitstatus
+        # Log STDERR.
+        err_thread = Thread.new do
+          stderr.each_line do |l|
+            logger.info("stderr: #{l.chomp}")
+          end
+        end
+
+        # Read STDOUT.
+        output = stdout.read.chomp
+
+        # Collect exit status.
+        err_thread.join
+        result = wait_thread.value.exitstatus
       end
     ensure
       logger.info "#{command} completed with exit status #{result}"
