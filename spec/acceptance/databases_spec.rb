@@ -28,7 +28,7 @@ describe Endpoints::Databases do
       attachment_name: "HEROKU_POSTGRESQL_PERF_PURPLE",
       description: "Make it better, or cheaper, or both"
     })
-    post "/databases", Fernet.generate(Config.shogun_auth_secret, data)
+    post "/databases", Fernet.generate(Config.shogun_shared_key, data)
     expect(last_response.status).to eq(201)
   end
 
@@ -38,7 +38,7 @@ describe Endpoints::Databases do
       admin_url: "postgres://admin@localhost/new",
       resource_url: "postgres://user@localhost/new"
     })
-    patch "/databases/#{database.uuid}", Fernet.generate(Config.shogun_auth_secret, data)
+    patch "/databases/#{database.uuid}", Fernet.generate(Config.shogun_shared_key, data)
     expect(last_response.status).to eq(200)
   end
 
