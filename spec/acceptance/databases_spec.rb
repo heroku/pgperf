@@ -13,7 +13,7 @@ describe Endpoints::Databases do
   end
 
   before do
-    authorize nil, Fernet.generate(Config.pgperf_auth_secret, 'pgperf')
+    authorize nil, Fernet.generate(Config.shogun_shared_key, 'pgperf')
   end
 
   it "POST /databases" do

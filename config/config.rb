@@ -22,7 +22,6 @@ module Config
     :heroku_app_name,
     :heroku_platform_api_token,
     :attr_secure_secret,
-    :pgperf_auth_secret,
     :shogun_shared_key,
     :database_url
 
