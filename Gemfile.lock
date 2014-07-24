@@ -24,6 +24,8 @@ GEM
     clockwork (0.7.7)
       activesupport
       tzinfo
+    codeclimate-test-reporter (0.3.0)
+      simplecov (>= 0.7.1, < 1.0.0)
     coderay (1.1.0)
     columnize (0.8.9)
     committee (1.5.0)
@@ -34,6 +36,7 @@ GEM
     database_cleaner (1.3.0)
     debugger-linecache (1.2.0)
     diff-lcs (1.2.5)
+    docile (1.1.5)
     dotenv (0.11.1)
       dotenv-deployment (~> 0.0.2)
     dotenv-deployment (0.0.2)
@@ -156,6 +159,11 @@ GEM
       json
       redis (>= 3.0.6)
       redis-namespace (>= 1.3.1)
+    simplecov (0.9.0)
+      docile (~> 1.1.0)
+      multi_json
+      simplecov-html (~> 0.8.0)
+    simplecov-html (0.8.0)
     sinatra (1.4.5)
       rack (~> 1.4)
       rack-protection (~> 1.4)
@@ -187,6 +195,7 @@ PLATFORMS
 DEPENDENCIES
   attr_secure!
   clockwork
+  codeclimate-test-reporter
   committee
   database_cleaner
   fabrication

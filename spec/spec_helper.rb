@@ -10,6 +10,9 @@ ENV["RACK_ENV"] = "test"
 require "bundler"
 Bundler.require(:default, :test)
 
+require "codeclimate-test-reporter"
+CodeClimate::TestReporter.start
+
 root = File.expand_path("../../", __FILE__)
 ENV.update(Pliny::Utils.parse_env("#{root}/.env.test"))
 
