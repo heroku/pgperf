@@ -24,7 +24,7 @@ module PGPerf
       database = Database[database_uuid]
 
       # Create test set
-      testset = create_testset(database)
+      testset = create_testset(database, script_name)
 
       # Write credentials to disk
       write_pgpass_file(Config.database_url, database.admin_url)
@@ -62,14 +62,14 @@ module PGPerf
       logger.info "#{command} completed with exit status #{result}"
     end
 
-    def create_testset(database)
+    def create_testset(database, script_name)
       testinfo = target_db_config(database.admin_url)
       TestSet.create(database_uuid: database.uuid,
         testdb: testinfo['TESTDB'],
         testport: testinfo['TESTPORT'],
         testuser: testinfo['TESTUSER'],
         testhost: testinfo['TESTHOST'],
-        info: database.description)
+        info: "#{script_name.parameterize}_#{database.description.parameterize}")
     end
 
     def pgpass_filename
