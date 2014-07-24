@@ -23,6 +23,7 @@ module Config
     :heroku_platform_api_token,
     :attr_secure_secret,
     :pgperf_auth_secret,
+    :shogun_auth_secret,
     :database_url
 
   # Optional -- value is returned or `nil` if it wasn't present.

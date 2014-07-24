@@ -25,9 +25,9 @@ gem "hiredis"
 gem "redis", ">= 2.2.0", :require => ["redis/connection/hiredis", "redis"]
 gem "sidekiq"
 gem "clockwork"
-gem "attr_secure"
+gem "attr_secure", git: "https://github.com/neilmiddleton/attr_secure", branch: "fernet_2_0"
 gem "fernet"
-gem "fernet-rack", '0.2'
+gem "fernet-rack", "0.5"
 
 group :development, :test do
   gem "pry-byebug"
