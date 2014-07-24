@@ -59,7 +59,7 @@ module PGPerf
         result = wait_thread.value.exitstatus
       end
     ensure
-      logger.info "#{command} completed with exit status #{result}"
+      logger.info "#{command} completed with exit status #{result.to_i}"
     end
 
     def create_testset(database, script_name)
