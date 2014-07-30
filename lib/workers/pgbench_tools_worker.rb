@@ -20,18 +20,20 @@ module PGPerf
       PGPerf::HkWorker.perform_async(5, queue, "PX")
     end
 
-    def perform(database_uuid, script_name)
+    def perform(database_uuid)
       database = Database[database_uuid]
-
-      # Create test set
-      testset = create_testset(database, script_name)
 
       # Write credentials to disk
       write_pgpass_file(Config.database_url, database.admin_url)
 
-      # Run test set
-      env = pgbench_env(database, testset, script_name)
-      run("./runset", env, chdir: '/app/vendor/pgbench-collector')
+      ["select", "tpc-b"].each do |script_name|
+        # Create test set
+        testset = create_testset(database, script_name)
+
+        # Run test set
+        env = pgbench_env(database, testset, script_name)
+        run("./runset", env, chdir: '/app/vendor/pgbench-collector')
+      end
     end
 
     private

@@ -19,7 +19,6 @@ describe PGPerf::PGBenchToolsWorker do
       "PGPASSFILE"=>"/app/.pgpass",
       "TESTHOST"=>"localhost", "TESTUSER"=>"admin", "TESTPORT"=>"", "TESTDB"=>"perf",
       "RESULTHOST"=>"localhost", "RESULTUSER"=>nil, "RESULTPORT"=>"", "RESULTDB"=>"pgperf_test",
-      "SCRIPT"=>"select.sql"
     }
   end
 
@@ -27,6 +26,7 @@ describe PGPerf::PGBenchToolsWorker do
     expect(worker).to receive(:write_pgpass_file).with(Config.database_url,
       database.admin_url)
     expect(worker).to receive(:run).with("./runset", hash_including(env), chdir: '/app/vendor/pgbench-collector')
-    worker.perform(database.uuid, "select")
+    expect(worker).to receive(:run).with("./runset", hash_including(env), chdir: '/app/vendor/pgbench-collector')
+    worker.perform(database.uuid)
   end
 end
