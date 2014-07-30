@@ -10,7 +10,6 @@ class Database < Sequel::Model
   attr_secure :admin_url
 
   def enqueue_benchmark
-    PGPerf::PGBenchToolsWorker.perform_async(uuid, "select")
-    PGPerf::PGBenchToolsWorker.perform_async(uuid, "tpc-b")
+    PGPerf::PGBenchToolsWorker.perform_async(uuid)
   end
 end
