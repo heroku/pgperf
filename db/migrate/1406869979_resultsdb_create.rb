@@ -8,7 +8,7 @@ Sequel.migration do
       String :testhost, :text=>true, :null=>false
       Integer :testport, :null=>false
       String :settings, :text=>true
-      foreign_key :database_uuid, :databases, :type=>String, :key=>[:uuid]
+      foreign_key :database_uuid, :databases, :type=>:uuid, :key=>[:uuid]
 
       index [:info], :name=>:testset_info_key, :unique=>true
     end
