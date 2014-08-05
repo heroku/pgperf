@@ -17,7 +17,7 @@ describe PGPerf::PGBenchToolsWorker do
       "SETCLIENTS"=>"1 10 50 100 150 200 250 300",
       "SETTIMES"=>"1", "RUNTIME"=>"600",
       "PGPASSFILE"=>"/app/.pgpass",
-      "TESTHOST"=>"localhost", "TESTUSER"=>"admin", "TESTPORT"=>"", "TESTDB"=>"perf",
+      "TESTHOST"=>"localhost", "TESTUSER"=>"admin", "TESTPORT"=>"5432", "TESTDB"=>"perf",
       "RESULTHOST"=>"localhost", "RESULTUSER"=>nil, "RESULTPORT"=>"", "RESULTDB"=>"pgperf_test",
     }
   end
