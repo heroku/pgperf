@@ -28,4 +28,25 @@ describe Mediators::Databases::Creator do
     allow_any_instance_of(Database).to receive(:enqueue_benchmark)
     creator.call
   end
+
+  it "just enqueues a benchmark if database already exists" do
+    creator.call
+    allow_any_instance_of(Database).to receive(:enqueue_benchmark)
+    creator.call
+  end
+
+  it "checks admin url looks like a postgres url" do
+    mediator = Mediators::Databases::Creator.new(params.merge({
+      admin_url: "https://localhost:5432"
+    }))
+    expect{mediator.call}.to raise_error(ArgumentError, "admin_url is not a postgres uri")
+  end
+
+  it "checks resource url looks like a postgres url" do
+    mediator = Mediators::Databases::Creator.new(params.merge({
+      resource_url: "https://localhost:5432"
+    }))
+    expect{mediator.call}.to raise_error(ArgumentError, "resource_url is not a postgres uri")
+  end
 end
+
