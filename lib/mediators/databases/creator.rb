@@ -25,13 +25,13 @@ module Mediators::Databases
     def check_admin_url_format!
       return if @admin_url =~ /^postgres:\/\//
 
-      raise ArgumentError "admin_url is not a postgres uri"
+      raise ArgumentError, "admin_url is not a postgres uri"
     end
 
     def check_resource_url_format!
       return if @resource_url =~ /^postgres:\/\//
 
-      raise ArgumentError "resource_url is not a postgres uri"
+      raise ArgumentError, "resource_url is not a postgres uri"
     end
 
     def shogun_name
