@@ -28,24 +28,4 @@ describe Mediators::Databases::Creator do
     allow_any_instance_of(Database).to receive(:enqueue_benchmark)
     creator.call
   end
-
-  it "don't creating duplicates benchmark" do
-    creator.call
-    expect{creator.call}.to raise_error(ArgumentError, "heroku_id is already registered")
-  end
-
-  it "checks admin url looks like a postgres url" do
-    mediator = Mediators::Databases::Creator.new(params.merge({
-      admin_url: "https://localhost:5432"
-    }))
-    expect{mediator.call}.to raise_error(ArgumentError, "admin_url is not a postgres uri")
-  end
-
-  it "checks resource url looks like a postgres url" do
-    mediator = Mediators::Databases::Creator.new(params.merge({
-      resource_url: "https://localhost:5432"
-    }))
-    expect{mediator.call}.to raise_error(ArgumentError, "resource_url is not a postgres uri")
-  end
 end
-
