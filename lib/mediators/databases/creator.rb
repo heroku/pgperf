@@ -35,7 +35,7 @@ module Mediators::Databases
     end
 
     def shogun_name
-      if m = @attachment_name.match(/\AHEROKU_POSTGRESQL_([^_]*)_[^\Z]*\Z/)
+      if m = @attachment_name.match(/\AHEROKU_POSTGRESQL_([^_]*)_[^_]*(_URL?\Z|\Z)/)
         "shogun-#{m[1].downcase}"
       else
         "shogun"
