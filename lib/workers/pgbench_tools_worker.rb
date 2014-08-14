@@ -71,7 +71,7 @@ module PGPerf
         testport: testinfo['TESTPORT'],
         testuser: testinfo['TESTUSER'],
         testhost: testinfo['TESTHOST'],
-        info: "#{script_name.parameterize}_#{database.description.parameterize}")
+        info: "#{script_name}_#{database.heroku_id}")
     end
 
     def pgpass_filename
