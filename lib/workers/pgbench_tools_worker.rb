@@ -135,9 +135,9 @@ module PGPerf
         'OSDATA'      => '0',
         'MAX_WORKERS' => '8',
         'SCALES'      => '750',
-        'SETCLIENTS'  => '10 50 100 150 200 250 300 400 500',
-        'SETTIMES'    => '2',
-        'RUNTIME'     => '1800',
+        'SETCLIENTS'  => '1 500 400 300 200 100',
+        'SETTIMES'    => '1',
+        'RUNTIME'     => '600',
         'PGPASSFILE'  => pgpass_filename,
       }
     end
