@@ -134,10 +134,10 @@ module PGPerf
         'TABBED'      => '0',
         'OSDATA'      => '0',
         'MAX_WORKERS' => '8',
-        'SCALES'      => '750',
+        'SCALES'      => '150000',
         'SETCLIENTS'  => '1 100 200 300 400 500',
         'SETTIMES'    => '1',
-        'RUNTIME'     => '900',
+        'RUNTIME'     => '3600',
         'PGPASSFILE'  => pgpass_filename,
       }
     end

@@ -4,16 +4,13 @@ FROM crosstab(
   $$SELECT 
     plan,
     clients,
-    round(max(tps)) as TPS
+    round(count(tps)) as TPS
     FROM tests, testset, databases
     WHERE 
       tests.set=testset.set AND 
       testset.database_uuid = databases.uuid AND
       test_type='select' AND
-      plan not like '%baku%' AND
-      plan not like '%ika%' AND
-      plan not like '%mecha%' AND
-      current_timestamp - databases.created_at < '240 hours'
+      current_timestamp - databases.created_at < '5 hours'
       -- current_timestamp - databases.created_at < '240 hours'
     GROUP BY clients, plan
     ORDER BY plan, clients asc
