@@ -104,7 +104,7 @@ module PGPerf
       ).merge({
         'SCRIPT' => "#{script_name}.sql",
         'CURRENT_SET' => testset.pk.to_s,
-        'PATH' => "/app/vendor/postgresql/bin:$/PATH"
+        'PATH' => "/app/vendor/postgresql/bin:#{ENV['PATH']}"
       })
     end
 
