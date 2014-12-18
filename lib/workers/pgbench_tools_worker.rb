@@ -103,7 +103,8 @@ module PGPerf
         results_db_config(Config.database_url)
       ).merge({
         'SCRIPT' => "#{script_name}.sql",
-        'CURRENT_SET' => testset.pk.to_s
+        'CURRENT_SET' => testset.pk.to_s,
+        'PATH' => "/app/vendor/postgresql/bin:$/PATH"
       })
     end
 
