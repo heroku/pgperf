@@ -66,12 +66,14 @@ module PGPerf
 
     def create_testset(database, script_name)
       testinfo = target_db_config(database.admin_url)
-      TestSet.create(database_uuid: database.uuid,
-        testdb: testinfo['TESTDB'],
-        testport: testinfo['TESTPORT'],
-        testuser: testinfo['TESTUSER'],
-        testhost: testinfo['TESTHOST'],
-        info: "#{script_name}_#{database.heroku_id}")
+      keyinfo = "#{script_name}_#{database.heroku_id}"
+      TestSet.where(info: keyinfo).first ||
+        TestSet.create(database_uuid: database.uuid,
+                       testdb: testinfo['TESTDB'],
+                       testport: testinfo['TESTPORT'],
+                       testuser: testinfo['TESTUSER'],
+                       testhost: testinfo['TESTHOST'],
+                       info: keyinfo)
     end
 
     def pgpass_filename
