@@ -16,7 +16,7 @@ describe PGPerf::PGBenchToolsWorker do
       "TABBED"=>"0", 
       "OSDATA"=>"0",
       "MAX_WORKERS"=>"8", 
-      "SCALES"=>"150000",
+      "SCALES"=>"750",
       "SETCLIENTS"=>"1 100 200 300 400 500",
       "SETTIMES"=>"1", 
       "RUNTIME"=>"3600",
