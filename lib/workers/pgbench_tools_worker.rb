@@ -137,7 +137,7 @@ module PGPerf
         'TABBED'      => '0',
         'OSDATA'      => '0',
         'MAX_WORKERS' => '8',
-        'SCALES'      => '750',
+        'SCALES'      => '8125',
         'SETCLIENTS'  => '1 10 100 200 300 400 500',
         'SETTIMES'    => '1',
         'RUNTIME'     => '1800',
