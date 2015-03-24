@@ -38,6 +38,8 @@ group :development do
 end
 
 group :test do
+  gem "guard"
+  gem "guard-rspec"
   gem "committee"
   gem "fabrication"
   gem "database_cleaner"
