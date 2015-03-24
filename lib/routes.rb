@@ -27,7 +27,6 @@ Routes = Rack::Builder.new do
   end
 
   use Rack::Auth::Fernet, Config.shogun_shared_key
-  use Rack::Fernet, Config.shogun_shared_key
 
   use Pliny::Router do
     mount Endpoints::Databases
