@@ -140,7 +140,7 @@ module PGPerf
         'SCALES'      => '8125',
         'SETCLIENTS'  => '1 10 100 200 300 400 500',
         'SETTIMES'    => '1',
-        'RUNTIME'     => '1800',
+        'RUNTIME'     => 5.hours.to_s,
         'PGPASSFILE'  => pgpass_filename,
       }
     end
