@@ -17,7 +17,7 @@ module PGPerf
 
     def self.top_off_workers
       queue = self.get_sidekiq_options["queue"].to_s
-      PGPerf::HkWorker.perform_async(5, queue, "PX")
+      PGPerf::HkWorker.perform_async(7, queue, "PX")
     end
 
     def perform(database_uuid)
